@@ -9,7 +9,7 @@ int main(){
         cout<<"Enter choice: ";
         cin>>choice;
         if(choice==4){
-            cout<<"Thank You";
+            cout<<"..."
             break;
         }
 
