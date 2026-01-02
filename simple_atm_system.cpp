@@ -1,42 +1,74 @@
 #include <iostream>
 using namespace std;
-int main(){
-    short int balance = 1000,choice;double amt=0;
-    cout<<"ATM Menu"<<endl;
-    cout<<"1.Check Balance \n2.Deposit \n3.Withdraw \n4.Exit"<<endl;.
+
+void showmenu(){
+    cout<<endl;
+    cout<<"\nATM Menu:"<<endl;
+    cout<<"\n1.Check Balance \n2.Deposit \n3.Withdraw \n4.Exit"<<endl;
+}
+
+double withdraw(double balance){
+    double amount;
+    cout << "\nEnter amount to withdraw: ";
+    cin >> amount;
+    if(amount>balance){
+        cout<<"Not enough money."<<endl;
+        return balance;
+    }
+    else{
+        balance-=amount;
+        cout << "Succefully withdrawn,New balance: "<< balance << endl;
+        return balance;
+    }
+}
+
+double deposit(double balance){
+    double amount;
+    cout << "\nEnter amount to deposit: ";
+    cin >> amount;
+    balance+=amount;
+    cout << "Succefully deposited,New balance: " << balance << endl;
+    return balance;
+}
+
+void showbalance(double balance){
+    cout << "\nCurrent Balance: " << balance << endl;
+
+}
+void operation(){
 
     while(true){
-        cout<<"Enter choice: ";
-        cin>>choice;
+        short int choice;
+        showmenu();
+        cout << "\nEnter your choice :";
+        cin >> choice;
+
         if(choice==4){
-            cout<<"..."
+            cout << "Thank You...";
             break;
         }
-
+        
         switch(choice){
             case 1:
-                cout<<"Balance : $"<<balance<<endl;
+                showbalance(balance);
                 break;
             case 2:
-                cout<<"Enter amount to deposit : ";
-                cin>>amt;
-                balance+=amt;
+                balance=deposit(balance);
                 break;
             case 3:
-                cout<<"Enter amount to withdraw : ";
-                cin>>amt;
-
-                if (balance<amt){
-                    cout<<"Insufficient Funds.";
-                }
-                else{
-                    balance-=amt;
-                }
+                balance=withdraw(balance);
                 break;
             default:
-                cout<<"Invalid choice...";
+                cout << "\nInvalid choice"<<endl;
                 break;
+                
         }
     }
+
+}
+
+int main(){
+    double balance=1000;
+    operation();
     return 0;
 }
