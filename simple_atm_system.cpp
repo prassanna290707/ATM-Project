@@ -35,7 +35,7 @@ void showbalance(double balance){
     cout << "\nCurrent Balance: " << balance << endl;
 
 }
-void operation(){
+double operation(double balance){
 
     while(true){
         short int choice;
@@ -69,6 +69,6 @@ void operation(){
 
 int main(){
     double balance=1000;
-    operation();
+    balance=operation(balance);
     return 0;
 }
